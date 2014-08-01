@@ -1,6 +1,8 @@
 # Stupid Simple QRCode.js
 A simplified presentation of [davidshimjs' QRCode.js](https://github.com/davidshimjs/qrcodejs), this project gives you one thing: A resolution independent QR code generated from the URL hash.
 
+![A demo of a QR code for example.com](demo.png)
+
 I built it to provide an easy way for me to get URLs to my phone.
 
 ## Usage
