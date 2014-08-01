@@ -1,27 +1,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>Cross-Browser QRCode generator for Javascript</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+<title>QR Code</title>
 <script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="qrcode.js"></script>
 </head>
 <body>
-<input id="text" type="text" value="http://jindo.dev.naver.com/collie" style="width:80%" /><br />
-<div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+<div style="width: 800px; margin: auto;">
+	<input id="text" type="text" value="http://mimming.com" style="width: 775px; text-align: center; font-size: 50px; height: 60px;" />
+	<div id="qrcode" style="margin-top:15px;"></div>
+</div>
 
-<script type="text/javascript">
+<script>
+$(document).ready(function() {
+    $('#text').click(function() {
+        $(this).select();
+    });
+    if(location.hash.length > 1) {
+      var stuff = location.hash.substr(1);
+      $('#text').val(stuff);
+      makeCode();
+    }
+});
+
 var qrcode = new QRCode(document.getElementById("qrcode"), {
-	width : 100,
-	height : 100
+	width : 780,
+	height :780 
 });
 
 function makeCode () {		
 	var elText = document.getElementById("text");
 	
 	if (!elText.value) {
-		alert("Input a text");
+		alert("Stubbornly failed to convert nothing into a QR code.");
 		elText.focus();
 		return;
 	}
