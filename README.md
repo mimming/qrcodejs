@@ -11,8 +11,9 @@ I built it to provide an easy way for me to get URLs to my phone.
 3. Pass in the text or URL you'd like to QR-ize as a hash fragment a la [http://mimming.com/qr#http://example.com](http://mimming.com/qr#http://example.com).
 
 ## License
-MIT License
+[MIT License](LICENSE)
 
 ## Contact
-[http://mimming.com](http://mimming.com)
-twitter [@baconatedgeek](http://twitter.com/baconatedgeek)
+
+- [http://mimming.com](http://mimming.com)
+- Twitter: [@baconatedgeek](http://twitter.com/baconatedgeek)
