@@ -186,7 +186,13 @@ var QRCode;
 			var nWidth = Math.floor(_htOption.width / nCount);
 			var nHeight = Math.floor(_htOption.height / nCount);
 
-			this.clear();
+      var codeWidth = _htOption.width;
+      var codeHeight = _htOption.height;
+      var codeX = _htOption.x;
+      var codeY = _htOption.y;
+
+
+      this.clear();
 
 			function makeSVG(tag, attrs) {
 				var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
@@ -195,7 +201,7 @@ var QRCode;
 				return el;
 			}
 
-			var svg = makeSVG("svg" , {'viewBox': '0 0 ' + String(nCount) + " " + String(nCount), 'width': '100%', 'height': '100%', 'fill': _htOption.colorLight});
+			var svg = makeSVG("svg" , {'x': codeX, 'y': codeY, 'viewBox': '0 0 ' + String(nCount) + " " + String(nCount), 'width': codeWidth, 'height': codeHeight, 'fill': _htOption.colorLight});
 			svg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
 			_el.appendChild(svg);
 
@@ -535,6 +541,8 @@ var QRCode;
 		this._htOption = {
 			width : 256, 
 			height : 256,
+      x: 0,
+      y: 0,
 			typeNumber : 4,
 			colorDark : "#000000",
 			colorLight : "#ffffff",

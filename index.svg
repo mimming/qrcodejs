@@ -1,30 +1,24 @@
 <?xml version="1.0" standalone="yes"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
-  <g id="qrcode"/>
-  <foreignObject x="0" y="0" width="100" height="100">
-    <body xmlns="http://www.w3.org/1999/xhtml" style="padding:0; margin:0">
-      <script type="application/ecmascript" src="qrcode.js"></script>
-      <script type="application/ecmascript">
-var elem = document.getElementById("qrcode");
-var qrcode = new QRCode(elem, {
-    width : 100,
-    height : 100
-});
-var oldHash;
-function makeCode() {
-  window.setTimeout(makeCode, 100);
-  if(location.hash.length > 1) {
-    if(oldHash != location.hash.substr(1)) {
-      oldHash = location.hash.substr(1);
-	  qrcode.makeCode(oldHash);
-    }
-  } else {
-    qrcode.makeCode("http://mimming.com");
-  }
-}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <rect x="0" y="0" width="100" height="100" stroke="white" fill="white"/>
+    <g id="qrcode"/>
+    <foreignObject>
+        <body xmlns="http://www.w3.org/1999/xhtml" style="padding:0; margin:0">
+            <script type="application/ecmascript" src="qrcode.js"></script>
+            <script type="application/ecmascript">
+                var elem = document.getElementById("qrcode");
+                var qrcode = new QRCode(elem, {
+                    text: location.hash.length > 1 ? location.hash.substr(1) : "http://mimming.com",
+                    width: 92,
+                    height: 92,
+                    x: 4,
+                    y: 4
+                });
 
-makeCode();
-</script>
-    </body>
-  </foreignObject>
+                window.onhashchange = function() {
+                    qrcode.makeCode(location.hash.length > 1 ? location.hash.substr(1) : "http://mimming.com");
+                };
+            </script>
+        </body>
+    </foreignObject>
 </svg>
